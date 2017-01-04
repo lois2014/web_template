@@ -1,0 +1,47 @@
+.information>h1 {
+    font-size: 16px;
+    font-family: "microsoft yahei";
+    font-weight: normal;
+    text-indent: 5px;
+    margin-top: 30px;
+    color: #6e6e6f;
+}
+
+.information .personalinfo {
+    border-top: 1px solid #dbdbdb;
+}
+
+.information>div {
+    border: 1px solid #dbdbdb;
+    border-top: none;
+    padding-left: 20px;
+    padding-top: 25px;
+    color: #6e6e6f;
+    font-size: 14px;
+    padding-right: 20px;
+}
+
+.personalinfo>div span {
+    display: inline-block;
+    width: 100px;
+    text-align: right;
+}
+.personalinfo>div span i {
+    position: relative;
+    top: 3px;
+    color: #f00;
+    font-weight: 800;
+}
+
+.information input {
+    height: 29px;
+    width: 169px;
+    margin-right: 20px;
+    padding-right: 30px;
+    padding-left: 10px;
+    outline: 0;
+    line-height: 20px;
+    font-size: 16px;
+    vertical-align: middle;
+    border: 1px solid rgb(219, 219, 219);
+}

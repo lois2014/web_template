@@ -1,0 +1,123 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+    <title>Home</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <link href="/pageTest/css/public_style.css" rel="stylesheet"/>
+    <link href="/pageTest/css/top_foot.css" rel="stylesheet" />
+    <script type="text/javascript" src="/pageTest/js/jquery-1.10.2.min.js"></script>
+</head>
+<body>
+    <div class="topbox">
+    <!--顶部-->
+    <div class="topbanner_all">
+        <div class="topbanner">
+            <div class="topbanner_right">
+                <a href="#">首页</a>
+                <a href="#">登录</a>
+                <a href="#">注册</a>
+                <a href="#">预约流程</a>
+            </div>
+        </div>
+    </div>
+    <!---->
+    <!--头部-->
+    <div class="top clearfix">
+        <div class="logo">
+            <a href="index.html">
+                <img src="/pageTest/img/logo.png">
+                <div class="txt"> 中国人的健康体检服务平台 </div>
+            </a>
+        </div>
+        <div class="top_center newcenter">
+            <div class="top_search">
+                <input id="searchKeyValue" type="text" placeholder="请输入套餐名....">
+                <a class="pointer" onclick="javascript:onSearch();" ref="nofollow">搜索</a>
+            </div>
+        </div>
+    </div>
+    <!---->
+    <!--导航栏-->
+        <div class="nav clearfix">
+            <div class="nav_all clearfix">
+                <ul class="nav_body">
+                    <li><a class="nav_index" href="/pageTest/tpl/">首页</a></li>
+                    <li><a class="nav_tc" href="/pageTest/tpl/package_list.html">体检套餐</a></li>
+                    <li><a class="nav_jg" href="/pageTest/tpl/organ_list.html">体检机构</a></li>
+                </ul>
+            </div>
+        </div>
+    <!---->
+</div>
+    <div class="content">
+        <div class="list_tc">
+            <div class="classify fl">
+                <div class="tc_left fl">
+                    <div class="show" style="display: block; height: auto;">
+                        <ul>
+                            <li>
+                                <samp>
+                                    <a href="#" target="_blank" rel="nofollow"><img src="/pageTest/img/2bd3a6c111f14a95b5f73a853a94361a.PNG" width="268" height="201"></a>
+                                    <a href="#" class="summary" target="_blank" style="left: 0px; top: 201px;">
+                                        <p>
+                                            wqrqwrqerx
+                                        </p>
+                                    </a>
+                                </samp>
+                                <p>
+                                    <a title="123" href="#" target="_blank">sada</a>
+                                </p>
+                                <p>
+                                    <em class="hpname">
+                                        <span>213123</span>
+                                    </em>
+                                </p>
+                                <p class="priceInfo">
+                                    <span>销量: 1231</span>
+                                    <b>￥<strong>212.3</strong></b>
+                                    <s>原价: ￥212.3</s>
+                                </p>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="foot">
+        <div class="footer_tips">
+
+        </div>
+        <div class="footer">
+            <p>
+                康康体检网，个性化体检定制与预约一站式服务平台。深圳市迈康信息技术有限公司 400-1000-920
+                <br>
+                Copyright(C)2010-2015康康体检网版权所有  工信部备案号:粤ICP备11060749号-8
+            </p>
+        </div>
+    </div>
+</body>
+</html>
+
+<script>
+    $(document).ready(function() {
+
+//        三角样式
+        var hrefSp = window.location.href.split("/");
+        if (hrefSp.length > 0) {
+            var pathName = window.location.pathname.toString().toLowerCase();
+            if(pathName.indexOf('package_list') > -1){
+                $(".nav_tc").siblings().removeClass('nav-on');
+                $(".nav_tc").addClass('nav_tc nav-on');
+            }else if(pathName.indexOf('organ_list') > -1){
+                $(".nav_jg").siblings().removeClass('nav-on');
+                $(".nav_jg").addClass('nav_jg nav-on');
+            }else{
+                $(".nav_index").siblings().removeClass('nav-on');
+                $(".nav_index").addClass('nav_index nav-on');
+            }
+
+        }
+    });
+</script>

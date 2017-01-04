@@ -1,0 +1,170 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+    <title>Home</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <link href="/pageTest/css/public_style.css" rel="stylesheet"/>
+    <link href="/pageTest/css/top_foot.css" rel="stylesheet" />
+    <link href="/pageTest/css/member_style.css" rel="stylesheet" />
+    <script type="text/javascript" src="/pageTest/js/jquery-1.10.2.min.js"></script>
+</head>
+<body>
+<div class="topbox">
+    <!--顶部-->
+    <div class="topbanner_all">
+        <div class="topbanner">
+            <div class="topbanner_right">
+                <a href="#">首页</a>
+                <a href="/pageTest/tpl/login.html">登录</a>
+                <a href="/pageTest/tpl/register.html">注册</a>
+                <a href="#">预约流程</a>
+            </div>
+        </div>
+    </div>
+    <!---->
+    <!--头部-->
+    <div class="top clearfix">
+        <div class="logo">
+            <a href="index.html">
+                <img src="/pageTest/img/logo.png">
+                <div class="txt"> 中国人的健康体检服务平台 </div>
+            </a>
+        </div>
+    </div>
+    <!---->
+</div>
+<div class="content">
+    <div class="mem_login_all">
+        <div class="mem_body login_layout">
+            <div class="mem_login_pic fl">
+                <img src="/pageTest/img/login_pic.png" width="569" height="469">
+            </div>
+            <div class="mem_login fr">
+                <div class="mem_login_title">
+                    <h3>会员登录</h3>
+                    <a href="/pageTest/tpl/register.html">新用户注册</a>
+                </div>
+                <div class="error_message" id="error" style="display: none"></div>
+                <ul>
+                    <li>
+                        <input type="text" id="userName" placeholder="用户名" maxlength="20" >
+                    </li>
+                    <li>
+                        <input type="password" id="password" placeholder="密码" maxlength="20">
+                    </li>
+                    <li>
+                      <a onclick="checkout()" id="btnLogin" style="cursor: pointer;">登录</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+
+    </div>
+</div>
+<div class="foot">
+    <div class="footer_tips">
+
+    </div>
+    <div class="footer">
+        <p>
+            康康体检网，个性化体检定制与预约一站式服务平台。深圳市迈康信息技术有限公司 400-1000-920
+            <br>
+            Copyright(C)2010-2015康康体检网版权所有  工信部备案号:粤ICP备11060749号-8
+        </p>
+    </div>
+</div>
+<script>
+
+    function checkout(){
+
+        $("#error").attr("style","display: none");
+        $("#error").text("");
+
+        var userName = $.trim($("#userName").val());
+        var password = $.trim($("#password").val());
+        if(userName == ''){
+            $("#error").attr("style","display: block");
+            $("#error").text("请输入用户名");
+            $("#userName").focus();
+            return;
+        }
+
+        if(password == ''){
+            $("#error").attr("style","display: block");
+            $("#error").text("请输入密码");
+            $("#password").focus();
+            return;
+        }
+
+        if(userName.length < 2 || userName.length > 20){
+            $("#error").attr("style","display: block");
+            $("#error").text("用户名要求2~20位");
+            $("#userName").focus();
+            return;
+        }
+
+        if(password.length > 20 || password.length < 6){
+            $("#error").attr("style","display: block");
+            $("#error").text("密码要求6~20位(不含空白字符)");
+            $("#password").focus();
+            return;
+        }
+
+        if(password != password.replace(/\s/g,"")){
+            $("#error").attr("style","display: block");
+            $("#error").text("密码不能含空白字符");
+            $("#password").focus();
+            return;
+        }
+
+    }
+
+
+</script>
+</body>
+</html>
+
+<script>
+    $(function() {
+         function checkout(){
+            var userName = $.trim($("#userName").val());
+            var password = $.trim($("#password").val());
+            if(userName == ''){
+                $("#error").attr("style","display: block");
+                $("#error").text("请输入用户名");
+                $("#userName").focus();
+                return;
+            }
+
+            if(password == ''){
+                $("#error").attr("style","display: block");
+                $("#error").text("请输入密码");
+                $("#password").focus();
+                return;
+            }
+
+            if(userName.length < 2 || userName.length > 20){
+                $("#error").attr("style","display: block");
+                $("#error").text("用户名要求2~20位");
+                $("#userName").focus();
+                return;
+            }
+
+            if(password.length > 20 || password.length < 6){
+                $("#error").attr("style","display: block");
+                $("#error").text("密码要求6~20位(不含空白字符)");
+                $("#password").focus();
+                return;
+            }
+
+            if(password != password.replace(/\s/g,"")){
+                $("#error").attr("style","display: block");
+                $("#error").text("密码不能含空白字符");
+                $("#password").focus();
+                return;
+            }
+
+        }
+    });
+</script>

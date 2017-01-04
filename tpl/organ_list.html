@@ -1,0 +1,131 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+    <title>Home</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <link href="/pageTest/css/public_style.css" rel="stylesheet"/>
+    <link href="/pageTest/css/top_foot.css" rel="stylesheet" />
+    <script type="text/javascript" src="/pageTest/js/jquery-1.10.2.min.js"></script>
+</head>
+<body>
+<div class="topbox">
+    <!--顶部-->
+    <div class="topbanner_all">
+        <div class="topbanner">
+            <div class="topbanner_right">
+                <a href="#">首页</a>
+                <a href="#">登录</a>
+                <a href="#">注册</a>
+                <a href="#">预约流程</a>
+            </div>
+        </div>
+    </div>
+    <!---->
+    <!--头部-->
+    <div class="top clearfix">
+        <div class="logo">
+            <a href="index.html">
+                <img src="/pageTest/img/logo.png">
+                <div class="txt"> 中国人的健康体检服务平台 </div>
+            </a>
+        </div>
+        <div class="top_center newcenter">
+            <div class="top_search">
+                <input id="searchKeyValue" type="text" placeholder="请输入套餐名....">
+                <a class="pointer" onclick="javascript:onSearch();" ref="nofollow">搜索</a>
+            </div>
+        </div>
+    </div>
+    <!---->
+    <!--导航栏-->
+    <div class="nav clearfix">
+        <div class="nav_all clearfix">
+            <ul class="nav_body">
+                <li><a class="nav_index" href="/pageTest/tpl/">首页</a></li>
+                <li><a class="nav_tc" href="/pageTest/tpl/package_list.html">体检套餐</a></li>
+                <li><a class="nav_jg" href="/pageTest/tpl/organ_list.html">体检机构</a></li>
+            </ul>
+        </div>
+    </div>
+    <!---->
+</div>
+<div class="content">
+    <div class="list_jg">
+        <div class="list_jg_left fl">
+            <div class="select_left fl">
+                <div class="list_jg_body fl">
+                    <ul>
+                        <li>
+                            <div>
+                                <samp>
+                                    <a href="#" target="_blank">
+                                        <img src="/pageTest/img/2eeb99dcd1754141959032b93e9d08af.JPG" width="239" height="171">
+                                    </a>
+                                </samp>
+                                <dl>
+                                    <dt>
+                                        <a href="#" target="_blank"> weqw</a>
+                                            <p><em>体检套餐
+                                                <span>27个</span>
+                                                <b>￥347</b>
+                                                <span>起</span>
+                                            </em></p>
+                                    </dt>
+                                    <dd>
+                                        <samp class="dd_hospital"></samp>
+                                        <em>公立三甲</em>
+                                    </dd>
+                                    <dd>
+                                        <samp class="dd_address"></samp>
+                                        <em>地址</em>
+                                    </dd>
+                                    <dd>
+                                        <samp class="dd_timeclock"></samp>
+                                        <em>时间</em>
+                                    </dd>
+                                </dl>
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="foot">
+    <div class="footer_tips">
+
+    </div>
+    <div class="footer">
+        <p>
+            康康体检网，个性化体检定制与预约一站式服务平台。深圳市迈康信息技术有限公司 400-1000-920
+            <br>
+            Copyright(C)2010-2015康康体检网版权所有  工信部备案号:粤ICP备11060749号-8
+        </p>
+    </div>
+</div>
+</body>
+</html>
+
+<script>
+    $(document).ready(function() {
+
+//        三角样式
+        var hrefSp = window.location.href.split("/");
+        if (hrefSp.length > 0) {
+            var pathName = window.location.pathname.toString().toLowerCase();
+            if(pathName.indexOf('package_list') > -1){
+                $(".nav_tc").siblings().removeClass('nav-on');
+                $(".nav_tc").addClass('nav_tc nav-on');
+            }else if(pathName.indexOf('organ_list') > -1){
+                $(".nav_jg").siblings().removeClass('nav-on');
+                $(".nav_jg").addClass('nav_jg nav-on');
+            }else{
+                $(".nav_index").siblings().removeClass('nav-on');
+                $(".nav_index").addClass('nav_index nav-on');
+            }
+
+        }
+    });
+</script>
