@@ -1,0 +1,257 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+    <title>Home</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <link href="../css/public_style.css" rel="stylesheet"/>
+    <link href="../css/top_foot.css" rel="stylesheet" />
+    <link href="../css/order.css" rel="stylesheet" />
+    <link href="../css/shopping.css" rel="stylesheet" />
+    <script type="text/javascript" src="../js/jquery-1.10.2.min.js"></script>
+
+    <script async>
+        function fp_ready(){
+            // setting custom defaults
+            Flatpickr.l10n.firstDayOfWeek = 1;
+
+            //Regular flatpickr
+            document.getElementById("flatpickr-tryme").flatpickr();
+            document.getElementsByClassName("calendar").flatpickr();
+
+            var calendars = document.getElementsByClassName("flatpickr").flatpickr();
+
+            var real_selection = document.getElementById("realdate");
+            document.getElementById("alt")._flatpickr.config.onChange = function(obj, str){
+                real_selection.textContent = str;
+            }
+
+            document.getElementById("disableRange").flatpickr({
+                disable: [
+                    {
+                        from: "2016-08-16",
+                        to: "2016-08-19"
+                    },
+                    "2016-08-24",
+                    new Date().fp_incr(30) // 30 days from now
+                ],
+                minDate: "today"
+            });
+
+            document.getElementById("disableOddDays").flatpickr({
+                disable: [
+                    function(date) { return date.getDate()%2; } // disable odd days
+                ]
+            });
+            document.getElementById("enableNextSeven").flatpickr({
+                enable: [
+                    {
+                        from: "today",
+                        to: new Date().fp_incr(7)
+                    }
+                ]
+            });
+            document.getElementById("enableCustom").flatpickr({
+                enable: [
+                    function(dateObj){
+                        return dateObj.getDay() %6 !== 0 && dateObj.getFullYear() === 2016;
+                    }
+                ]
+            });
+
+            // Event API
+            var events = document.getElementById("events");
+            document.getElementById("events-api-example").flatpickr({
+                minDate: "today",
+                enableTime: true,
+                onChange: function(dateObj, dateStr, fp) {
+                    console.log(fp.selectedDateObj);
+                    events.innerHTML += "<b>onChange</b> (<code>" + dateObj + "</code>, <code>" + dateStr + "</code> )<br>";
+                    events.scrollTop = events.offsetTop;
+                },
+                onOpen: function(dateObj, dateStr, fp){
+                    events.innerHTML += "<b>onOpen</b> (<code>" + dateObj + "</code>, <code>" + dateStr + "</code> )<br>";
+                    events.scrollTop = events.offsetTop;
+                },
+                onClose: function(dateObj, dateStr, fp){
+                    events.innerHTML += "<b>onClose</b> (<code>" + dateObj + "</code>, <code>" + dateStr + "</code> )<br>";
+                    events.scrollTop = events.offsetTop;
+                },
+                onReady: function(dateObj, dateStr, fp){
+                    events.innerHTML += "<b>onReady</b> (<code>" + dateObj + "</code>, <code>" + dateStr + "</code> )<br>";
+                    events.scrollTop = events.offsetTop;
+                }
+            });
+
+            // Check in/out example
+            var check_in = document.getElementById("check_in_date").flatpickr({
+                altInput: true,
+                altFormat: "\\C\\h\\e\\c\\k \\i\\n\\: l, F j Y",
+                minDate: new Date()
+            });
+            var check_out = document.getElementById("check_out_date").flatpickr({
+                altInput: true,
+                altFormat: "\\C\\h\\e\\c\\k \\o\\u\\t: l, F j Y",
+                minDate: new Date()
+            });
+
+            check_in.config.onChange = function(dateObj) {
+                check_out.set("minDate", dateObj.fp_incr(1));
+            };
+            check_out.config.onChange = function(dateObj) {
+                check_in.set("maxDate", dateObj.fp_incr(-1));
+            }
+
+            var fiscal = document.getElementById("fiscal").flatpickr({
+                weekNumbers: true
+            });
+
+            // Fiscal calendar
+            fiscal.getWeek = function(givenDate){
+                var checkDate = new Date(givenDate.getTime());
+                checkDate.setDate(checkDate.getDate() + 4 - (checkDate.getDay() || 7));
+                var time = checkDate.getTime();
+                checkDate.setMonth(7);
+                checkDate.setDate(28);
+                var week = (Math.floor(Math.round((time - checkDate) / 86400000) / 7) + 2);
+                if (week < 1) {
+                    week = 52 + week;
+                }
+                return 'FW' + ("0" + week).slice(-2);
+            }
+
+            fiscal.redraw();
+
+
+            // Date format
+            var fpInstance = new Flatpickr(document.createElement("input")),
+                    formatOutput = document.getElementById("dateFormatOutput"),
+                    now = new Date();
+
+            document.getElementById("dateFormatComposer").addEventListener("keyup", function(e){
+                formatOutput.textContent = fpInstance.formatDate(e.target.value, now);
+            });
+
+        }
+    </script>
+
+    <script async src="../timeselect/dist/flatpickr.js" onload="fp_ready()"></script>
+    <script async src="../timeselect/assets/prettify.js?skin=none" onload="prettyPrint()"></script>
+    <script async src="../timeselect/assets/table-of-contents.js"></script>
+    <script async src="../timeselect/assets/themer.js"></script>
+    <script async id="locale_script"></script>
+    <script async src="../timeselect/assets/localizr.js"></script>
+
+    <link rel="stylesheet" type="text/css" href="../timeselect/assets/site.css">
+    <link rel="stylesheet" id=cal_style type="text/css" href="../timeselect/dist/flatpickr.min.css">
+</head>
+<body>
+<div class="topbox">
+    <!--顶部-->
+    <div class="topbanner_all">
+        <div class="topbanner">
+            <div class="topbanner_right">
+                <a href="#">首页</a>
+                <a href="#">登录</a>
+                <a href="#">注册</a>
+                <a href="#">预约流程</a>
+            </div>
+        </div>
+    </div>
+    <!---->
+    <!--头部-->
+    <div class="top clearfix">
+        <div class="logo">
+            <a href="index.html">
+                <img src="../img/logo.png">
+                <div class="txt"> 中国人的健康体检服务平台 </div>
+            </a>
+        </div>
+        <div class="top_center newcenter">
+            <div class="top_search">
+                <input id="searchKeyValue" type="text" placeholder="请输入套餐名....">
+                <a class="pointer" onclick="javascript:onSearch();" ref="nofollow">搜索</a>
+            </div>
+        </div>
+    </div>
+    <!---->
+    <!--导航栏-->
+    <div class="nav clearfix">
+        <div class="nav_all clearfix">
+            <ul class="nav_body">
+                <li><a class="nav_index" href="/pageTest/tpl/">首页</a></li>
+                <li><a class="nav_tc" href="/pageTest/tpl/package_list.html">体检套餐</a></li>
+                <li><a class="nav_jg" href="/pageTest/tpl/organ_list.html">体检机构</a></li>
+            </ul>
+        </div>
+    </div>
+    <!---->
+</div>
+
+<div class="content">
+    <div class="shopping">
+        <ul class="shopping_nav">
+            <!--<li>-->
+                <!--<i>&nbsp;</i>-->
+                <!--<p>-->
+                    <!--<font></font>-->
+                    <!--选择可加项-->
+                <!--</p>-->
+                <!--<em>&nbsp;</em>-->
+            <!--</li>-->
+            <li id="1">
+                <i>&nbsp;</i>
+                <p>
+                    <font>①</font>
+                    填写核对订单
+                </p>
+                <em>&nbsp;</em>
+            </li>
+            <li id="2">
+                <i>&nbsp;</i>
+                <p>
+                    <font>②</font>
+                    提交订单成功
+                </p>
+                <em>&nbsp;</em>
+            </li>
+            <li id="3" class="s_nav_last">
+                <i>&nbsp;</i>
+                <p>
+                    <font>③</font>
+                    预约时间
+                </p>
+            </li>
+
+        </ul>
+        <div class=flex>
+
+            <div class="c-l">
+                <div class='wrapper'>
+                    <div class="example" data-desc="A basic datepicker" id="basic">
+                        预约时间：
+                        <p>
+                            <input id="flatpickr-tryme" placeholder="选择预约时间" value="">
+                        </p>
+                    </div>
+                </div>
+            </div>
+    </div>
+</div>
+</div>
+<div class="foot">
+    <div class="footer_tips">
+
+    </div>
+    <div class="footer">
+        <p>
+            康康体检网，个性化体检定制与预约一站式服务平台。深圳市迈康信息技术有限公司 400-1000-920
+            <br>
+            Copyright(C)2010-2015康康体检网版权所有  工信部备案号:粤ICP备11060749号-8
+        </p>
+    </div>
+</div>
+</body>
+</html>
+<script type="text/javascript" src="../js/common.js"></script>
+

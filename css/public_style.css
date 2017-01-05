@@ -1284,6 +1284,58 @@ a:hover {
     float: left;
     width: 20px;
     height: 35px;
-    background: url(../images/s_nav_left.png) no-repeat;
+    background: url(../img/s_nav_left.png) no-repeat;
     margin-top: -1px;
+}
+
+
+.shopping_nav li p {
+    float: left;
+    width: 280px;
+    height: 35px;
+    line-height: 35px;
+    text-align: center;
+    color: #666;
+    font-size: 14px;
+    margin: -1px 0 0 0;
+}
+
+
+.shopping_nav li font {
+    font-size: 16px;
+    margin-right: 5px;
+}
+
+
+.shopping_nav li em {
+    float: left;
+    width: 20px;
+    height: 35px;
+    background: url(../img/s_nav_bg.jpg) no-repeat;
+}
+
+.shopping_nav li.shopping_nav_on {
+    width: 320px;
+    margin-left: -20px;
+}
+
+.shopping_nav li.s_nav_last {
+    width: 279px;
+}
+
+.information .fail~b {
+    font-weight: normal;
+    color: #f00;
+}
+
+.information .realpay {
+    border: none;
+    padding-right: 0;
+    padding-bottom: 20px;
+    background-color: #fff;
+}
+
+.shopping_nav li.shopping_nav_on p {
+    background-color: #019eeb;
+    color: #FFF;
 }
