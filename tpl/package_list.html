@@ -81,6 +81,9 @@
                                 </p>
                             </li>
                         </ul>
+                        <div class="page fl" id="p_select">
+
+                        </div>
                     </div>
                 </div>
             </div>
@@ -100,3 +103,42 @@
     </div>
 </body>
 </html>
+<script>
+    $(document).ready(
+            function(){
+                $.ajax({
+                    type:"GET",
+                    contentType:"application/json",
+                    url:"/pageTest/data/package.json",
+                    data:{"page":"1","pageSize":"2"},
+                    dataType:'json',
+                    success:function(result){
+                        $('.show>ul').appendChild("<li>
+                                <samp>
+                                <a href='#' target='_blank' rel='nofollow'><img src='/pageTest/img/2bd3a6c111f14a95b5f73a853a94361a.PNG' width='268' height='201'></a>
+                                <a href='#' class='summary' target='_blank' style='left: 0px; top: 201px;'>
+                                <p>
+                                wqrqwrqerx
+                                </p>
+                                </a>
+                                </samp>
+                                <p>
+                                <a title='123' href='#' target='_blank'>sada</a>
+                                </p>
+                                <p>
+                                <em class='hpname'>
+                                <span>213123</span>
+                                </em>
+                                </p>
+                                <p class='priceInfo'>
+                                <span>销量: 1231</span>
+                        <b>￥<strong>212.3</strong></b>
+                        <s>原价: ￥212.3</s>
+                        </p>
+                        </li>");
+                        alert(result[0].name);
+                    }
+                });
+            }
+    )
+</script>

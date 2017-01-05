@@ -1339,3 +1339,28 @@ a:hover {
     background-color: #019eeb;
     color: #FFF;
 }
+
+.page {
+    width: 100%;
+    height: auto;
+    text-align: center;
+    margin-top: 46px;
+    margin-bottom: 30px;
+}
+
+.page a.on {
+    background-color: #dddddd;
+    color: #FFF;
+}
+.page a {
+    display: inline-block;
+    width: auto;
+    height: 24px;
+    line-height: 24px;
+    text-align: center;
+    color: #898989;
+    font-size: 13px;
+    padding: 0 10px;
+    margin: 0 1px;
+    border: #dddddd 1px solid;
+}
